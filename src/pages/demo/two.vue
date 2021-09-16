@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="container" v-clickOut="setSearch()">
+    <div v-clickOut="setSearch()" class="container">
       2222
       <button v-copy="copyText">复制</button>
       <button v-debounce="debounceClick">防抖</button>
       <button v-permission="'1'">权限按钮1</button>
       <!-- 不显示 -->
       <button v-permission="'10'">权限按钮2</button>
-      <p>{{nowTime | timeStamp}}</p>
+      <p>{{ nowTime | timeStamp }}</p>
     </div>
   </div>
 </template>
@@ -15,19 +15,19 @@
 export default {
   data() {
     return {
-      copyText: "a copy directives",
+      copyText: 'a copy directives',
       nowTime: new Date().valueOf()
-    };
+    }
   },
   methods: {
     setSearch() {
-      console.log(222);
+      console.log(222)
     },
     debounceClick() {
-      console.log("只触发一次");
-    },
-  },
-};
+      console.log('只触发一次')
+    }
+  }
+}
 </script>
 <style>
 .container {

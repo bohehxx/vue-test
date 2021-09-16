@@ -1,9 +1,10 @@
-  
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/Home'
 import One from '@/pages/demo/one'
 import Two from '@/pages/demo/two'
+import Three from '@/pages/demo/three'
 import ClassDemo from '@/pages/demo/classDemo'
 import ComputedDemo from '@/pages/demo/computedDemo'
 import EventDemo from '@/pages/demo/eventDemo'
@@ -37,6 +38,11 @@ export default new Router({
       path: '/two',
       name: 'Two',
       component: Two
+    },
+    {
+      path: '/three',
+      name: 'Three',
+      component: Three
     },
     {
       path: '/class',
@@ -88,6 +94,6 @@ export default new Router({
       name: 'wat',
       component: Wat
     }
-    
+
   ]
 })

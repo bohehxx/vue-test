@@ -1,16 +1,16 @@
 <template>
-    <p>state B</p>
+  <p>state B</p>
 </template>
 
 <script>
 export default {
-    mounted() {
-        // eslint-disable-next-line
+  mounted() {
+    // eslint-disable-next-line
         console.log('B mounted')
-    },
-    destroyed() {
-        // eslint-disable-next-line
+  },
+  destroyed() {
+    // eslint-disable-next-line
         console.log('B destroyed')
-    }
+  }
 }
 </script>
