@@ -27,6 +27,9 @@ export default {
       console.log("只触发一次");
     },
   },
+  created(){
+    this.$toast.show('注册失败,请重新输入', 1000)
+  }
 };
 </script>
 <style>

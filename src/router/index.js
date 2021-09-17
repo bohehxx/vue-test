@@ -14,6 +14,7 @@ import KeepAlive from '@/pages/advancedUse/KeepAlive'
 import MinxinDemo from '@/pages/advancedUse/MixinDemo'
 import NextTick from '@/pages/advancedUse/NextTick'
 import Wat from '@/pages/wat/Index'
+import Listen from '@/pages/listen/Index'
 Vue.use(Router)
 
 export default new Router({
@@ -87,6 +88,11 @@ export default new Router({
       path: '/wat',
       name: 'wat',
       component: Wat
+    },
+    {
+      path: '/listen',
+      name: 'Listen',
+      component: Listen
     }
     
   ]

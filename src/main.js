@@ -11,6 +11,9 @@ Vue.use(customDirectives)
 // 自定义过滤器全局注册
 import customFilters from './filters/'
 Vue.use(customFilters)
+import toast from './common/toast/index'
+Vue.use(toast)
+
 new Vue({
   render: h => h(App),
   router
