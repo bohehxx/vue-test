@@ -32,6 +32,17 @@
     <transition name="fade">
       <p v-if="show">hello</p>
     </transition>
+    {{ obj.b }}
+    <p @click="add(obj)">add</p>
+    <p @click="deleteName()">delete</p>
+    {{ message | capitalize }}
+    <div>
+      <label for="bookNum">数 量</label>
+      <button @click="setCount(count+1)">+</button>
+      <span>{{ count }}</span>
+      <button @click="setCount(count-1)">-</button>
+    </div>
+    <anchored-heading :level="1">Hello world!</anchored-heading>
   </div>
 </template>
 <script>
@@ -40,6 +51,8 @@ import BaseInput from './module/baseInput.vue'
 import NavigationLink from './module/navigationLink.vue'
 import BaseLayout from './module/baseLayout.vue'
 import CurrentUser from './module/currentUser.vue'
+import { store, mutations } from '../../store/index'
+import Vue from 'vue'
 export default {
   components: {
     BaseCheckbox,
@@ -47,6 +60,21 @@ export default {
     NavigationLink,
     BaseLayout,
     CurrentUser
+  },
+  directives: {
+    focus: {
+    // 指令的定义
+      inserted: function(el) {
+        el.focus()
+      }
+    }
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   },
   data() {
     return {
@@ -57,13 +85,24 @@ export default {
         firstName: 'Li',
         lastName: 'li'
       },
-      show: true
+      show: true,
+      obj: {
+        a: 1
+      },
+      nameList: {
+        id: '1',
+        name: '叶叶也'
+      },
+      message: 'john'
 
     }
   },
   computed: {
     filterList() {
       return this.list.filter(item => item === 1)
+    },
+    count() {
+      return store.count
     }
   },
   watch: {
@@ -74,10 +113,40 @@ export default {
       console.log(val, 'valll2')
     }
   },
+  created() {
+    this.handleObj()
+    Vue.component('anchored-heading', {
+      props: {
+        level: {
+          type: Number,
+          required: true
+        }
+      },
+      render: function(createElement) {
+        return createElement(
+          'h' + this.level, // 标签名称
+          this.$slots.default // 子节点数组
+        )
+      }
+    })
+  },
   methods: {
     onFocus() {
       console.log('focus')
-    }
+    },
+    handleObj() {
+      // this.obj.b = 3
+      this.$set(this.obj, 'b', 3)
+    },
+    add(obj) {
+      console.log(obj, 'obj')
+      obj.b = obj.b + 1
+    },
+    deleteName() {
+      this.$delete(this.nameList, 'name')
+      console.log(this.nameList, 'this.nameList')
+    },
+    setCount: mutations.setCount
   }
 }
 </script>
