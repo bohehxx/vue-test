@@ -1,14 +1,14 @@
 <template>
- <div>222{{this.msg}}
-     
- </div>
+  <div>222{{ msg }}
+
+  </div>
 </template>
 <script>
 export default {
-  inject:['msg'],
-  created(){
-      
+  inject: ['msg'],
+  created() {
+
   }
-};
+}
 </script>
 
