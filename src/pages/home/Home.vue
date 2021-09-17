@@ -7,26 +7,26 @@
       sdf="asd"
       @isClick="isClick"
       @asd="asd"
-    ></centers>
+    />
   </section>
 </template>
 <script>
-  import centers from './Center'
-  export default {
-    components: {
-      centers
+import centers from './Center'
+export default {
+  components: {
+    centers
+  },
+  mounted() {
+    console.log(this.$el, 'this.$el')
+    console.log(this.$el.parentElement, 'this.$el.parentElement')
+  },
+  methods: {
+    asd() {
+      console.log(999)
     },
-    methods: {
-      asd() {
-        console.log(999);
-      },
-      isClick() {
-        console.log(666);
-      }
-    },
-    mounted() {
-      console.log(this.$el,'this.$el')
-      console.log(this.$el.parentElement,'this.$el.parentElement')
+    isClick() {
+      console.log(666)
     }
   }
+}
 </script>
