@@ -1,19 +1,21 @@
 <template>
-  <div class='toast'
-       v-show='isShow'>
-    {{message}}
+  <div
+    v-show="isShow"
+    class="toast"
+  >
+    {{ message }}
   </div>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       message: '',
       isShow: false
     }
   },
   methods: {
-    show (message, duration) {
+    show(message, duration) {
       this.message = message
       this.isShow = true
       setTimeout(() => {

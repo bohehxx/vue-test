@@ -1,5 +1,5 @@
 <template>
-  <div>111{{ this.msg }}
+  <div>111{{ msg }}
     <item />
   </div>
 </template>

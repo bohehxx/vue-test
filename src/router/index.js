@@ -36,11 +36,6 @@ export default new Router({
       component: Two
     },
     {
-      path: '/two',
-      name: 'Two',
-      component: Two
-    },
-    {
       path: '/three',
       name: 'Three',
       component: Three
