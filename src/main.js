@@ -14,6 +14,9 @@ import customFilters from './filters/'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 Vue.use(customFilters)
+import toast from './common/toast/index'
+Vue.use(toast)
+
 new Vue({
   render: h => h(App),
   router

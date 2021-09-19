@@ -2,11 +2,12 @@
 
 import app from './app'
 export default {
-    install: function(Vue){
-        // 批量注册app目录组件
-        for(let item in app){
-            let compPath = app[item]
-            Vue.component(item, () => import(`./app/${compPath}`))
-        }
+  install: function(Vue) {
+    // 批量注册app目录组件
+    for (const item in app) {
+      const compPath = app[item]
+      Vue.component(item, () => import(`./app/${compPath}`))
     }
+  }
 }
+
