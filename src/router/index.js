@@ -15,6 +15,7 @@ import KeepAlive from '@/pages/advancedUse/KeepAlive'
 import MinxinDemo from '@/pages/advancedUse/MixinDemo'
 import NextTick from '@/pages/advancedUse/NextTick'
 import Wat from '@/pages/wat/Index'
+import Trade from '@/pages/dstso/trade'
 Vue.use(Router)
 
 export default new Router({
@@ -93,6 +94,11 @@ export default new Router({
       path: '/wat',
       name: 'wat',
       component: Wat
+    },
+    {
+      path: '/trade',
+      name: 'trade',
+      component: Trade
     }
 
   ]
