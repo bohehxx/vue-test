@@ -15,6 +15,9 @@
               </div>
             </div>
           </swiper-slide>
+          <!-- 分页器 -->
+
+          <div slot="pagination" class="swiper-pagination" />
           <div slot="button-prev" class="swiper-button-prev" />
           <div slot="button-next" class="swiper-button-next" />
         </swiper>
@@ -68,6 +71,12 @@ export default {
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
+        },
+        // 分页器
+        pagination: {
+          el: '.swiper-pagination',
+
+          clickable: true // 允许点击小圆点跳转
         }
       }
     }
