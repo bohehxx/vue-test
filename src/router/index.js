@@ -16,6 +16,7 @@ import MinxinDemo from '@/pages/advancedUse/MixinDemo'
 import NextTick from '@/pages/advancedUse/NextTick'
 import Wat from '@/pages/wat/Index'
 import Trade from '@/pages/dstso/trade'
+import Book from '@/pages/dstso/book'
 Vue.use(Router)
 
 export default new Router({
@@ -94,6 +95,11 @@ export default new Router({
       path: '/trade',
       name: 'trade',
       component: Trade
+    },
+    {
+      path: '/book',
+      name: 'book',
+      component: Book
     }
 
   ]
