@@ -11,7 +11,7 @@ Vue.use(customDirectives)
 // 自定义过滤器全局注册
 import customFilters from './filters/'
 import vueSwiper from 'vue-awesome-swiper'
-
+import '@/icons'
 import 'swiper/swiper-bundle.css'
 Vue.use(vueSwiper)
 Vue.use(customFilters)

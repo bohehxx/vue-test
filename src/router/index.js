@@ -17,6 +17,12 @@ import NextTick from '@/pages/advancedUse/NextTick'
 import Wat from '@/pages/wat/Index'
 import Trade from '@/pages/dstso/trade'
 import Book from '@/pages/dstso/book'
+import Promisify from '@/pages/promisify/index'
+import Farbic from '@/pages/farbic/index'
+import Draw from '@/pages/draw/index'
+import Video from '@/pages/video/index'
+import File from '@/pages/file/index'
+
 Vue.use(Router)
 
 export default new Router({
@@ -100,6 +106,31 @@ export default new Router({
       path: '/book',
       name: 'book',
       component: Book
+    },
+    {
+      path: '/promisify',
+      name: 'promisify',
+      component: Promisify
+    },
+    {
+      path: '/farbic',
+      name: 'farbic',
+      component: Farbic
+    },
+    {
+      path: '/draw',
+      name: 'draw',
+      component: Draw
+    },
+    {
+      path: '/video',
+      name: 'video',
+      component: Video
+    },
+    {
+      path:'/file',
+      name:'file',
+      component:File
     }
 
   ]

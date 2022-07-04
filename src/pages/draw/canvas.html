@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+      }
+      #new-qrcode {
+        margin-top: 50px;
+      }
+      #new-qrcode canvas,
+      #new-qrcode img {
+        width: 300px;
+      }
+    </style>$
+  </head>
+  <body>
+    <div id="qrcode"></div>
+    <div id="new-qrcode"></div>
+    <button onclick="onDownloadQrcode()">下载二维码</button>
+
+    <script src="./qrcodejs2.js"></script>
+    <script type="text/javascript">
+      new QRCode(document.getElementById('qrcode'), {
+        text: 'http://www.test.com/?x=123456789&y=abcdefg',
+        width: 300,
+        height: 300,
+      });
+
+      createNewQrcode(document.querySelector('#qrcode canvas'));
+
+      /**
+       * 创建新的二维码
+       */
+      function createNewQrcode(originalQrcode) {
+        var newQrcodeWrap = document.querySelector('#new-qrcode');
+        var resolutionMultiple = 2; // 分辨率倍数
+        var borderSize = 10 * resolutionMultiple; // 边框留白
+        var canvasWidth = 300 * resolutionMultiple; // 图片宽度
+        var logoSize = 80 * resolutionMultiple; // logo直径
+        var logoBorderSize = 4 * resolutionMultiple; // logo描边
+        var logoUrl = './logo.png';
+        // var logoUrl = 'http://imgserver.com/test.jpeg';
+        var text = '底部自定义文案'; // 底部文字
+        var fontSize = 30 * resolutionMultiple; // 文字大小
+
+        var canvasHeight = canvasWidth + fontSize;
+        var canvas = document.createElement('canvas');
+        if (!canvas.getContext) return;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(255,255,255)'; // 调色(纯白)
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight); // 绘制背景
+
+        var qrcodeSize = canvasWidth - borderSize * 2;
+        ctx.drawImage(
+          originalQrcode,
+          borderSize,
+          borderSize,
+          qrcodeSize,
+          qrcodeSize
+        ); // 填充二维码
+
+        var logoCenterX = borderSize + qrcodeSize / 2;
+        var logoCenterY = logoCenterX;
+        ctx.arc(
+          logoCenterX,
+          logoCenterY,
+          logoSize / 2 + logoBorderSize,
+          0,
+          Math.PI * 2,
+          false
+        ); // 绘制logo圆形底图
+        ctx.fill(); // 填充背景
+
+        var logoX = (qrcodeSize - logoSize) / 2 + borderSize;
+        var logoY = logoX;
+        var logo = new Image();
+        logo.setAttribute('crossOrigin', 'anonymous'); // logo跨域许可
+        logo.onload = function () {
+          ctx.beginPath();
+          ctx.arc(
+            logoCenterX,
+            logoCenterY,
+            logoSize / 2,
+            0,
+            Math.PI * 2,
+            false
+          );
+          ctx.fill();
+          ctx.clip(); // 裁剪logo成圆形
+          ctx.drawImage(logo, logoX, logoY, logoSize, logoSize); // 填充logo
+          createImage();
+        };
+        logo.src = logoUrl; // 设置logo源地址
+
+        ctx.fillStyle = 'rgb(0,0,0)'; // 调色(纯黑)
+        ctx.font = fontSize + 'px Arial'; // 文本大小, 字体
+        ctx.textAlign = 'center';
+        ctx.fillText(
+          text,
+          canvasWidth / 2,
+          qrcodeSize + borderSize + fontSize,
+          qrcodeSize
+        ); // 绘制文本
+
+        canvas.style.display = 'none';
+        newQrcodeWrap.appendChild(canvas);
+
+        function createImage() {
+          // logo加载完成后再生成img,否则logo部分空白
+          var newQrcodeImg = new Image();
+          newQrcodeImg.src = canvas.toDataURL('image/png');
+          newQrcodeWrap.appendChild(newQrcodeImg);
+        }
+      }
+
+      /**
+       * 下载二维码
+       */
+      function onDownloadQrcode() {
+        var canvas = document.querySelector('#new-qrcode canvas');
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png'); // 将画布内的信息导出为png图片数据
+        a.download = 'qrcode.png'; // 设定下载名称
+        a.click(); // 点击触发下载
+      }
+    </script>
+  </body>
+</html>
