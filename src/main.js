@@ -16,8 +16,11 @@ import 'swiper/swiper-bundle.css'
 Vue.use(vueSwiper)
 Vue.use(customFilters)
 import toast from './common/toast/index'
+import Workbench from '@/components/ky/WorkBench'
+import WorkbenchHeader from '@/components/ky/workbenchHeader'
 Vue.use(toast)
-
+Vue.component("workbench", Workbench)
+Vue.component("workbench-header", WorkbenchHeader)
 new Vue({
   render: h => h(App),
   router

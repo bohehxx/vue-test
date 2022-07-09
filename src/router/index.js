@@ -22,7 +22,7 @@ import Farbic from '@/pages/farbic/index'
 import Draw from '@/pages/draw/index'
 import Video from '@/pages/video/index'
 import File from '@/pages/file/index'
-
+import Work from '@/pages/work/index'
 Vue.use(Router)
 
 export default new Router({
@@ -131,6 +131,11 @@ export default new Router({
       path:'/file',
       name:'file',
       component:File
+    },
+    {
+      path:'/work',
+      name:'work',
+      component:Work
     }
 
   ]
