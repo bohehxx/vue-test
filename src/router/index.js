@@ -23,6 +23,14 @@ import Draw from '@/pages/draw/index'
 import Video from '@/pages/video/index'
 import File from '@/pages/file/index'
 import Work from '@/pages/work/index'
+import Emitter from '@/pages/emit/A'
+import Functional from'@/pages/functional/index'
+import TableRender from '@/pages/comp/tableRender/index'
+import TableSlot from '@/pages/comp/tableSlot/index'
+import Display from '@/pages/comp/display/index'
+import Alert from '@/pages/comp/alert/index'
+import FormValidate from '@/pages/comp/form/index'
+import CheckBox from '@/pages/comp/checkbox/index'
 Vue.use(Router)
 
 export default new Router({
@@ -63,7 +71,7 @@ export default new Router({
       component: EventDemo
     },
     {
-      path: '/form',
+      path: '/formDemo',
       name: 'FormDemo',
       component: FormDemo
     },
@@ -136,7 +144,53 @@ export default new Router({
       path:'/work',
       name:'work',
       component:Work
+    },
+    {
+      path:'/emitter',
+      name:'emitter',
+      component:Emitter
+    },
+    {
+      path:'/functional',
+      name:'functional',
+      component:Functional
+    },
+    {
+      path:'/tableRender',
+      name:'tableRender',
+      component:TableRender
+    },
+    {
+      path:'/tableSlot',
+      name:'tableSlot',
+      component:TableSlot
+    },
+    {
+      path:'/display',
+      name:'display',
+      component:Display
+    },
+    {
+      path:'/alert',
+      name:'alert',
+      component:Alert
+    },
+    {
+      path:'/alert',
+      name:'alert',
+      component:Alert
+    },
+    {
+      path:'/formValidate',
+      name:'formValidate',
+      component:FormValidate
+    },
+    {
+      path:'/checkbox',
+      name:'checkbox',
+      component:CheckBox
     }
-
+    
+    
   ]
 })

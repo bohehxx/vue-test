@@ -18,6 +18,11 @@ Vue.use(customFilters)
 import toast from './common/toast/index'
 import Workbench from '@/components/ky/WorkBench'
 import WorkbenchHeader from '@/components/ky/workbenchHeader'
+import Alert from '../src/components/alert/alert.js'
+
+Vue.config.productionTip = false
+
+Vue.prototype.$Alert = Alert
 Vue.use(toast)
 Vue.component("workbench", Workbench)
 Vue.component("workbench-header", WorkbenchHeader)
